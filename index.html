@@ -12,34 +12,23 @@ font-family: sans-serif;
 }
 
 body { margin:0; padding:0; }
-#map { position:absolute; top:0; bottom:0; width:100%; height: 85%}
-
-#LinksContainer {
-display: grid;
-grid-template-columns: auto auto auto auto;
-grid-gap: 2em;
-}
-
-#LinksContainer > a {
-cursor: pointer;
-}
-
-#LinksContainer > a > div {
-height: 100%;
-display: flex;
-justify-content: center;
-    align-items: center;
-text-align: center;
-
-    background-position: center;
+#map {
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 85%;
 }
 
 #LinksContainer {
     width: 100%;
     height: 15%;
-    position:absolute;
+    position: absolute;
     bottom: 0;
-    background: white;
+    background-color: white;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 2em;
 }
 
 #Link1Container {
@@ -54,35 +43,42 @@ text-align: center;
     background-image: url('chicago-big.jpg');
 }
 
-@media screen and (max-width: 992px) {
-    #LinksContainer {
-        width: 100%;
-        height: 15%;
-        position:absolute;
-        bottom: 0;
-        background: white;
+#LinksContainer > a {
+    cursor: pointer;
+}
 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    #Link1Container {
-        background: none;
-    }
-
-    #Link2Container {
-        background: none;
-    }
-
-    #Link3Container {
-        background: none;
-    }
+#LinksContainer > a > div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
 }
 
 #LinksContainer > a > div > span {
     background-color: white;
     font-size: 40px;
+}
+
+@media screen and (max-width: 992px) {
+    #LinksContainer {
+        /*display: flex;
+        flex-direction: row;
+        justify-content: space-between;*/
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    #LinksContainer > a > div {
+        height: unset;
+        
+        background-image: none;
+        background: none;
+    }
+
+    #LinksContainer > a > div > span {
+        font-size: 20px;
+    }
 }
 </style>
 </head>
