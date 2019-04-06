@@ -166,10 +166,11 @@ map.addLayer({
 }, labelLayerId);
 });
 
-
-
+map.once('moveend', addTiltMapListener);
 
 document.getElementById('Link1').addEventListener('click', function() {
+    document.removeEventListener('deviceorientation', tiltMap, true);
+
     map.flyTo(
         {
             center: [-74.0066, 40.7135],
@@ -180,6 +181,8 @@ document.getElementById('Link1').addEventListener('click', function() {
     );
 });
 document.getElementById('Link2').addEventListener('click', function() {
+    document.removeEventListener('deviceorientation', tiltMap, true);
+
     map.flyTo(
         {
             center: [-122.3987, 37.7913],
@@ -190,6 +193,8 @@ document.getElementById('Link2').addEventListener('click', function() {
     );
 });
 document.getElementById('Link3').addEventListener('click', function() {
+    document.removeEventListener('deviceorientation', tiltMap, true);
+
     map.flyTo(
         {
             center: [-87.6202, 41.8883],
@@ -208,6 +213,8 @@ document.getElementById('Link4').addEventListener('click', function() {
     }
 });
 function showPosition(position) {
+    document.removeEventListener('deviceorientation', tiltMap, true);
+
     map.flyTo(
         {
             center: [position.coords.longitude, position.coords.latitude],
@@ -222,13 +229,19 @@ function showError() {
     alert("An error occured");
 }
 
-window.addEventListener(
-    "deviceorientation",
-    function(event) {
-        map.easeTo({pitch: event.beta});
-    },
-    true
-);
+function tiltMap(event) {
+    map.easeTo({pitch: event.beta});
+}
+
+function addTiltMapListener() {
+    window.addEventListener(
+        'deviceorientation',
+        tiltMap,
+        true
+    );
+}
+
+addTiltMapListener();
 </script>
  
 </body>
