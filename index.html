@@ -161,7 +161,7 @@ map.addLayer({
 
 var isMovingToSpecificLocation = false;
 
-map.once('moveend', function() {
+map.on('moveend', function() {
     isMovingToSpecificLocation = false;
 });
 
