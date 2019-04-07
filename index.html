@@ -224,11 +224,17 @@ function showError() {
 }
 
 function tiltMap(event) {
-    map.easeTo({pitch: event.beta});
+    if (screen.orientation === 'portrait-primary') {
+        map.easeTo({pitch: event.beta});
+    } else if (screen.orientation === 'landscape-primary') {
+        map.easeTo({pitch: -1 * event.gamma});
+    } else if (screen.orientation === 'landscape-secondary') {
+        map.easeTo({pitch: event.gamma});
+    }
 }
 
 function addTiltMapListener() {
-    window.addEventListener('deviceorientation', tiltMap);
+    window.addEventListener('deviceorientation', tiltMap, true);
 }
 
 addTiltMapListener();
