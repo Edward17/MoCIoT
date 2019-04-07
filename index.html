@@ -159,10 +159,15 @@ map.addLayer({
 }, labelLayerId);
 });
 
-map.once('moveend', addTiltMapListener);
+var isMovingToSpecificLocation = false;
+
+map.once('moveend', function() {
+    isMovingToSpecificLocation = false;
+});
 
 document.getElementById('Link1').addEventListener('click', function() {
-    window.removeEventListener('deviceorientation', tiltMap, true);
+    // window.removeEventListener('deviceorientation', tiltMap, true);
+    isMovingToSpecificLocation = true;
 
     map.flyTo(
         {
@@ -174,7 +179,8 @@ document.getElementById('Link1').addEventListener('click', function() {
     );
 });
 document.getElementById('Link2').addEventListener('click', function() {
-    window.removeEventListener('deviceorientation', tiltMap, true);
+    // window.removeEventListener('deviceorientation', tiltMap, true);
+    isMovingToSpecificLocation = true;
 
     map.flyTo(
         {
@@ -186,7 +192,8 @@ document.getElementById('Link2').addEventListener('click', function() {
     );
 });
 document.getElementById('Link3').addEventListener('click', function() {
-    window.removeEventListener('deviceorientation', tiltMap, true);
+    // window.removeEventListener('deviceorientation', tiltMap, true);
+    isMovingToSpecificLocation = true;
 
     map.flyTo(
         {
@@ -206,7 +213,8 @@ document.getElementById('Link4').addEventListener('click', function() {
     }
 });
 function showPosition(position) {
-    window.removeEventListener('deviceorientation', tiltMap, true);
+    // window.removeEventListener('deviceorientation', tiltMap, true);
+    isMovingToSpecificLocation = true;
 
     map.flyTo(
         {
@@ -223,6 +231,10 @@ function showError() {
 }
 
 function tiltMap(event) {
+    if (isMovingToSpecificLocation) {
+        return;
+    }
+
     switch (screen.orientation.type) {
         case 'portrait-primary':
             map.easeTo({pitch: event.beta});
@@ -236,11 +248,11 @@ function tiltMap(event) {
     }
 }
 
-function addTiltMapListener() {
-    window.addEventListener('deviceorientation', tiltMap, true);
-}
+// function addTiltMapListener() {
+window.addEventListener('deviceorientation', tiltMap, true);
+// }
 
-addTiltMapListener();
+// addTiltMapListener();
 </script>
  
 </body>
