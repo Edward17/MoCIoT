@@ -228,11 +228,7 @@ function tiltMap(event) {
 }
 
 function addTiltMapListener() {
-    window.addEventListener(
-        'deviceorientation',
-        tiltMap,
-        true
-    );
+    window.addEventListener('deviceorientation', tiltMap);
 }
 
 addTiltMapListener();
