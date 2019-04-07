@@ -60,7 +60,7 @@ body { margin:0; padding:0; }
     font-size: 40px;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 496px /*992px*/) {
     #LinksContainer {
         display: grid;
         grid-template-columns: auto auto;
@@ -224,12 +224,16 @@ function showError() {
 }
 
 function tiltMap(event) {
-    if (screen.orientation === 'portrait-primary') {
-        map.easeTo({pitch: event.beta});
-    } else if (screen.orientation === 'landscape-primary') {
-        map.easeTo({pitch: -1 * event.gamma});
-    } else if (screen.orientation === 'landscape-secondary') {
-        map.easeTo({pitch: event.gamma});
+    switch (screen.orientation.type) {
+        case 'portrait-primary':
+            map.easeTo({pitch: event.beta});
+            break;
+        case 'landscape-primary':
+            map.easeTo({pitch: -1 * event.gamma});
+            break;
+        case 'landscape-secondary') {
+            map.easeTo({pitch: event.gamma});
+            break;
     }
 }
 
