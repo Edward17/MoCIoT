@@ -60,16 +60,15 @@ body { margin:0; padding:0; }
     font-size: 40px;
 }
 
-@media screen and (max-width: 496px /*992px*/) {
+@media screen and (max-width: 496px) {
     #LinksContainer {
-        display: grid;
         grid-template-columns: auto auto;
         grid-gap: 0.5em;
     }
+}
 
+@media screen and (max-width: 992px) {
     #LinksContainer > a > div {
-        height: unset;
-        
         background-image: none;
         background: none;
     }
