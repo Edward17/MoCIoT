@@ -162,7 +162,7 @@ map.addLayer({
 map.once('moveend', addTiltMapListener);
 
 document.getElementById('Link1').addEventListener('click', function() {
-    document.removeEventListener('deviceorientation', tiltMap, true);
+    window.removeEventListener('deviceorientation', tiltMap, true);
 
     map.flyTo(
         {
@@ -174,7 +174,7 @@ document.getElementById('Link1').addEventListener('click', function() {
     );
 });
 document.getElementById('Link2').addEventListener('click', function() {
-    document.removeEventListener('deviceorientation', tiltMap, true);
+    window.removeEventListener('deviceorientation', tiltMap, true);
 
     map.flyTo(
         {
@@ -186,7 +186,7 @@ document.getElementById('Link2').addEventListener('click', function() {
     );
 });
 document.getElementById('Link3').addEventListener('click', function() {
-    document.removeEventListener('deviceorientation', tiltMap, true);
+    window.removeEventListener('deviceorientation', tiltMap, true);
 
     map.flyTo(
         {
@@ -206,7 +206,7 @@ document.getElementById('Link4').addEventListener('click', function() {
     }
 });
 function showPosition(position) {
-    document.removeEventListener('deviceorientation', tiltMap, true);
+    window.removeEventListener('deviceorientation', tiltMap, true);
 
     map.flyTo(
         {
